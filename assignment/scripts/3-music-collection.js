@@ -12,6 +12,7 @@ let myCollection = [];
 
 function addToCollection(collection, title, artist, yearPublished) {
 
+  //creates an album object with 3 attributes
   let album = {
     title: title,
     artist: artist,
@@ -19,13 +20,15 @@ function addToCollection(collection, title, artist, yearPublished) {
 
   };
 
+  //pushes the album object into the myCollection/inputted Array
+  //this is different than before as you are pushing an object into an Array rather than string or an int
   collection.push(album);
 
   return album;
 
 }
-//       
-//     ```
+
+// test cases of various album types being created
 addToCollection(myCollection, "One That Got Away", "Katy Perry", 2010);
 addToCollection(myCollection, "Dark Horse", "Katy Perry", 2013);
 addToCollection(myCollection, "California Girls", "Katy Perry", 2010);
@@ -34,7 +37,7 @@ addToCollection(myCollection, "Nachna", "Babbulicious", 2024);
 addToCollection(myCollection, "Koka", "Kanika Kapoor", 2024);
 
 
-//remove console.log(myCollection);
+console.log(myCollection);
 // - Use and Test the `addToCollection` function:
 //   - Add 6 albums to the `myCollection` array. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //   - `console.log` each album as added using the function's returned value.
@@ -48,7 +51,7 @@ function showCollection(collection) {
 
   for (x of collection) {
     console.log(`${x.title} by ${x.artist} published in ${x.yearPublished}`);
-    //confirm that x is returned with each string
+    //`` and ${} allow for album information to be outputted on a single string
   }
 }
 console.log(showCollection(myCollection));// - Test the `showCollection` function.
@@ -64,22 +67,27 @@ console.log(showCollection(myCollection));// - Test the `showCollection` functio
 function findByArtist(collection, artist) {
 
   let toReturn = [];
+  //whenever you create an empty Array to add unknown items make sure to use 
+  //pop function. If not the array length will stay at 1
+
+
   for (let c = 0; c < collection.length; c++) {
 
-    let count = 0;
-    if (collection[c].artist == artist) {
 
-      //console.log(collection[c]);
-      toReturn[count] = collection[c];
+    if (collection[c].artist === artist) {
+      //checks if the array item's artist attribute matches 
+      //artist that we are trying to find
 
-      count++;
+      toReturn.push(collection[c]);
+      //adds correct album item to toReturn Array
+
     }
 
   }
   return toReturn;
 }
 
-console.log(findByArtist(myCollection, "Katy Perry"));// - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are returned.
+console.log(findByArtist(myCollection, "Kanika Kapoor"));
 
 // > When testing your functions, write all tests in the JavaScript file!
 
