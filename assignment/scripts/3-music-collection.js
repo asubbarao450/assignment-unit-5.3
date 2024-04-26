@@ -105,6 +105,32 @@ console.log(findByArtist(myCollection, "Kanika Kapoor"));
 //     - If no results are found, return an empty array.
 //     - If there is no search object, an empty search object, or missing `artist`/`yearPublished` data provided as input, `return` **all albums** from the `collection` being searched.
 
+
+function search(collection, searchCriteria) {
+
+  let toReturn = [];
+
+  //writing the search criteria is not too difficult 
+  //but it is complicated dealing with the objects
+
+  for (let c = 0; c < collection.length; c++) {
+    if (collection[c].artist == searchCriteria.artist && collection[c].yearPublished == searchCriteria.yearPublished) {
+
+      toReturn.push(collection[c]);
+    }
+  }
+
+  return toReturn;
+}
+
+let searchObject = {
+  artist: "Katy Perry",
+  yearPublished: 2010
+
+};
+
+
+console.log(search(myCollection, searchObject));
 // ### Extra Stretchy Stretch Goals
 
 // - **NOTE**: The following stretch goals **do not have tests** associated with them.
